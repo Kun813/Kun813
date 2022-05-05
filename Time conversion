@@ -1,0 +1,11 @@
+Create a function to transform the time data as a string of "XX:XX:XXam" or 
+"XX:XX:XXpm" to the number of seconds counted from 12:00am. For example, the 
+input of "10:35:29am" gives an output of 38129; the input of 06:21:33pm gives 
+an output of 66093.
+
+def timeconversion(n):
+    from datetime import datetime
+    intime = datetime.strptime(n,"%I:%M:%S%p")
+    outtime = datetime.strftime(intime,"%H:%M:%S")
+    h,m,s = outtime.split(":")
+    return int(h)*3600+int(m)*60+int(s)
